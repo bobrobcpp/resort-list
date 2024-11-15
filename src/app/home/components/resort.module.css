@@ -6,6 +6,8 @@
     max-width: 800px;
     background-color: white;
     height: 250px;
+    font-size: 0.7rem;
+    line-height: 1px;
 }
 
 .resortInfo {
@@ -38,6 +40,7 @@
     background-color: white;
     border: none;
     box-shadow: 2px -2px 4px rgba(0, 0, 0, 0.1);
+    font-family: inherit;
 }
 
 .resortImageContainer {
@@ -51,8 +54,14 @@
     background-color: white;
     width: 100%;
     padding: 16px;
+    font-size: 0.7rem;
 }
 
 .resortOverviewHidden {
     display: none;
+}
+
+.price {
+    font-size: 1.5rem;
+    font-weight: 500;
 }

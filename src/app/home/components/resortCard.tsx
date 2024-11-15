@@ -23,12 +23,17 @@ export const ResortCard = ({ resort, bookingDetails, flightDetails }: HotelDataP
                 </div>
                 <div className={styles.resortInfo}>
                     <h3>{resort.name}</h3>
-                    <p>{resort.regionName}, {resort.countryName}</p>
-                    <p>{resort.starRating} star</p>
-                    <p>{formatGuestString(bookingDetails.party.adults, bookingDetails.party.children, bookingDetails.party.infants)}</p>
-                    <p>{flightDetails.departureDate} for {bookingDetails.lengthOfStay} nights </p>
-                    <p>departs from {flightDetails.departureAirport}</p>
-                    <button className={styles.button} type="button" onClick={() => router.push('https://www.onthebeach.co.uk/')} >Book now {bookingDetails.price.amount}</button>
+                    <span>{resort.regionName}, {resort.countryName}</span>
+                    <span>{resort.starRating} star</span>
+                    <span>{formatGuestString(bookingDetails.party.adults, bookingDetails.party.children, bookingDetails.party.infants)}</span>
+                    <span>{flightDetails.departureDate} for {bookingDetails.lengthOfStay} days </span>
+                    <span>departs from {flightDetails.departureAirport}</span>
+                    <button className={styles.button} type="button" onClick={() => router.push('https://www.onthebeach.co.uk/')}>
+                        Book now
+                        <span className={styles.price}>
+                            {bookingDetails.price.currency === 'GBP' ? '£' : ''}{bookingDetails.price.amount}
+                        </span>
+                    </button>
                 </div>
             </div>
             <div className={isExpanded ? styles.resortOverviewExpanded : styles.resortOverviewHidden}>
