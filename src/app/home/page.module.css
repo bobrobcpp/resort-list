@@ -1,5 +1,6 @@
 .page {
     width: 100%;
+    height: 100vw;
     margin: 0 auto;
     justify-items: center;
     background-image: url('https://static.onthebeach.co.uk/fe-code-test/background.png');
@@ -22,40 +23,4 @@
     background: var(--gray-alpha-100);
     background-color: white;
     margin: 20px;
-}
-
-.resortListContainer {
-    display: block;
-    margin: 20px;
-    justify-items: center;
-}
-
-.resortList {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 16px;
-}
-
-
-.resortCard {
-    display: grid;
-    grid-template-columns:  1fr 1fr;
-    border-color: var(--gray-alpha-200);
-    min-width: 180px;
-    max-width: 800px;
-    background-color: white;
-}
-
-.resortInfo {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 8px;
-    padding: 8px;
-}
-
-.button {
-    background: #FEDC07;
-    color: black;
-    gap: 8px;
-    max-width: 200px;
 }

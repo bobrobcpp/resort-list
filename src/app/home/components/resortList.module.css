@@ -1,0 +1,41 @@
+.resortListContainer {
+    display: block;
+    margin: 20px;
+    justify-items: center;
+}
+
+.resortList {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+}
+
+
+.resortCard {
+    display: grid;
+    grid-template-columns:  1fr 1fr;
+    border-color: var(--gray-alpha-200);
+    min-width: 180px;
+    max-width: 800px;
+    background-color: white;
+}
+
+.resortInfo {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 16px;
+}
+
+.button {
+    background: #FEDC07;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: system-ui, sans-serif;
+    transition: background-color 0.2s;
+}

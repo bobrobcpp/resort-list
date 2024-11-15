@@ -1,14 +1,18 @@
 'use client';
-import Image from "next/image";
-import { formatGuestString } from "./helpers/formatGuestString";
-import styles from "./page.module.css";
 import { useEffect, useState } from "react";
+
+import SortBar from "./components/sortBar";
+import { ResortList } from "./components/resortList";
+import { HotelListingsProvider } from "../dataProvider";
 import { HotelData } from "./types";
+
+import styles from "./page.module.css";
 
 export default function Home() {
   const [data, setData] = useState<HotelData[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
+
 
   useEffect(() => {
     (async () => {
@@ -30,29 +34,14 @@ export default function Home() {
 
   return (
     <div className={styles.page}>
+      {/* <HotelListingsProvider value={{ data, setData }}> */}
       <div className={styles.contentContainer}>
-        <div className={styles.sortBar}></div>
-        <div className={styles.resortListContainer}>
-          <div className={styles.resortList}>
-            {data.map(({ resort, flightDetails, bookingDetails }, index) => (
-              <div className={styles.resortCard} key={index}>
-                <Image src={resort.image.url} alt={resort.image.description} width={400} height={200} />
-                <div className={styles.resortInfo}>
-                  <h3>{resort.name}</h3>
-                  <p>{resort.regionName}, {resort.countryName}</p>
-                  <p>{resort.starRating} star</p>
-                  <p>{formatGuestString(bookingDetails.party.adults, bookingDetails.party.children, bookingDetails.party.infants)}</p>
-                  <p>{flightDetails.departureDate} for {bookingDetails.lengthOfStay} nights </p>
-                  <p>departs from {flightDetails.departureAirport}</p>
-                  <button className={styles.button}>Book now</button>
-                </div>
-              </div>
-            ))}
-          </div>
-          {loading && <p>Loading...</p>}
-          {error && <p>{error}</p>}
+        <div className={styles.sortBar}>
+          {/* <SortBar /> */}
         </div>
+        <ResortList {...{ data, error, loading }} />
       </div>
+      {/* </HotelListingsProvider> */}
     </div>
   )
 }
