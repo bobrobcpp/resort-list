@@ -17,7 +17,6 @@ const SortBar = () => {
 
     return (
         <fieldset className={styles.radioGroup}>
-            <legend className={styles.legend}>Sort Options</legend>
             {sortOptions.map((option) => (
                 <div key={option.id} className={styles.radioWrapper}>
                     <input

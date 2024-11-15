@@ -5,6 +5,7 @@
     min-width: 180px;
     max-width: 800px;
     background-color: white;
+    height: 250px;
 }
 
 .resortInfo {
@@ -25,4 +26,33 @@
     align-items: center;
     font-family: system-ui, sans-serif;
     transition: background-color 0.2s;
+}
+
+.expandableButton {
+    cursor: pointer;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50%;
+    height: 10%;
+    background-color: white;
+    border: none;
+    box-shadow: 2px -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.resortImageContainer {
+    position: relative;
+    height: 250px;
+    width: 400px;
+}
+
+.resortOverviewExpanded {
+    display: block;
+    background-color: white;
+    width: 100%;
+    padding: 16px;
+}
+
+.resortOverviewHidden {
+    display: none;
 }

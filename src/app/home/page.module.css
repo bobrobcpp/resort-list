@@ -16,11 +16,10 @@
 
 .sortBar {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 8px;
     padding: 16px;
     border-radius: 8px;
     background: var(--gray-alpha-100);
-    background-color: white;
     margin: 20px;
 }

@@ -4,66 +4,47 @@
     margin: 0 0 1.5rem 0;
   }
   
-  .legend {
-    font-weight: 600;
-    margin-bottom: 0.75rem;
-  }
-  
   .radioWrapper {
     position: relative;
     display: inline-block;
     margin-right: 1rem;
+    width: 100%;
   }
   
   .radioInput {
     position: absolute;
     opacity: 0;
-    width: 0;
-    height: 0;
+    width: 100%;
   }
   
   .radioLabel {
     display: inline-block;
     padding: 0.5rem 1rem;
-    border-radius: 0.375rem;
-    background-color: #e5e7eb;
+    background-color: white;
     cursor: pointer;
     transition: all 0.2s ease;
     font-size: 0.875rem;
+    width: 100%;
   }
   
   .radioLabel:hover {
-    background-color: #d1d5db;
+    background-color: #CCC;
   }
   
   .radioInput:checked + .radioLabel {
-    background-color: #3b82f6;
+    background-color: #17317F;
     color: white;
   }
   
   .radioInput:focus + .radioLabel {
-    outline: 2px solid #3b82f6;
+    outline: 2px solid #17317F;
     outline-offset: 2px;
   }
   
   .radioInput:focus:not(:focus-visible) + .radioLabel {
     outline: none;
   }
-  
-  .list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    list-style: none;
-    padding: 0;
-  }
-  
-  .listItem {
-    padding: 0.75rem;
-    background-color: white;
-    border-radius: 0.375rem;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  }
+
   
   .itemTitle {
     font-weight: 500;
@@ -73,4 +54,4 @@
   .itemDetails {
     font-size: 0.875rem;
     color: #4b5563;
-  }
+  } 
