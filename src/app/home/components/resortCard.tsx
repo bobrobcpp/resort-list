@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { ImArrowRight } from "react-icons/im";
-import { ImArrowDown2 } from "react-icons/im";
+import { ArrowRight, ArrowDown } from 'lucide-react';
 import styles from './resort.module.css';
 import Image from 'next/image';
 import { formatGuestString } from '../helpers/formatGuestString';
@@ -19,7 +18,9 @@ export const ResortCard = ({ resort, bookingDetails, flightDetails }: HotelDataP
             <div className={styles.resortCard}>
                 <div className={styles.resortImageContainer}>
                     <Image src={resort.image.url} alt={resort.image.description} width={400} height={250} />
-                    <button className={styles.expandableButton} onClick={handleOnClick} type='button'>{isExpanded ? 'Read less about this hotel    ' : `Read more about this hotel    `}{isExpanded ? <ImArrowDown2 /> : <ImArrowRight />}</button>
+                    <button className={styles.expandableButton} onClick={handleOnClick} type='button'>
+                        {isExpanded ? 'Read less about this hotel    ' : `Read more about this hotel    `}{isExpanded ? <ArrowDown /> : <ArrowRight />}
+                    </button>
                 </div>
                 <div className={styles.resortInfo}>
                     <h3>{resort.name}</h3>
@@ -37,6 +38,7 @@ export const ResortCard = ({ resort, bookingDetails, flightDetails }: HotelDataP
                 </div>
             </div>
             <div className={isExpanded ? styles.resortOverviewExpanded : styles.resortOverviewHidden}>
+                <h4>Overview</h4>
                 <p>{resort.overview}</p>
             </div>
         </div >
