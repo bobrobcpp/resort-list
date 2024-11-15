@@ -3,12 +3,12 @@ import { useEffect, useState } from "react";
 import SortBar from "./components/sortBar";
 import { ResortList } from "./components/resortList";
 import { ResortListingsContext } from "../context";
-import { HotelData } from "./types";
+import { HotelDataProps } from "./types";
 
 import styles from "./page.module.css";
 
 export default function Home() {
-  const [data, setData] = useState<HotelData[]>([]);
+  const [data, setData] = useState<HotelDataProps[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [sortByMethod, setSortByMethod] = useState('price');
@@ -46,7 +46,7 @@ export default function Home() {
 }
 
 
-const sortedListings = (listings: HotelData[], sortByMethod: string) => {
+const sortedListings = (listings: HotelDataProps[], sortByMethod: string) => {
   switch (sortByMethod) {
     case 'price':
       return [...listings].sort((b, a) => a.bookingDetails.price.amount - b.bookingDetails.price.amount);

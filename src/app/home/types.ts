@@ -1,3 +1,5 @@
+export type HotelDataProps = HotelData & { key: number; };
+
 export interface HotelData {
     resort: Resort;
     flightDetails: FlightDetails;
