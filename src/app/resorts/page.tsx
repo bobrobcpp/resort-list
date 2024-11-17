@@ -1,8 +1,9 @@
 'use client';
 import { useEffect, useState } from "react";
-import SortBar from "./components/sortBar";
-import { ResortList } from "./components/resortList";
-import { ResortListingsContext } from "../context";
+import SortBar from "@/components/SortBar/SortBar";
+import { ResortList } from "@/components/ResortList/ResortList";
+import { sortedListings } from "@/utils/sortedListings";
+import { ResortListingsContext } from "@/context/resortsContext";
 import { HotelDataProps } from "./types";
 
 import styles from "./page.module.css";
@@ -21,7 +22,6 @@ export default function Home() {
           throw new Error(`HTTP error ${response.status}`);
         }
         const data = await response.json();
-        console.log(data, 'response.json');
         setData(data);
         setLoading(false);
       } catch (error) {
@@ -44,17 +44,3 @@ export default function Home() {
     </div>
   )
 }
-
-
-const sortedListings = (listings: HotelDataProps[], sortByMethod: string) => {
-  switch (sortByMethod) {
-    case 'price':
-      return [...listings].sort((b, a) => a.bookingDetails.price.amount - b.bookingDetails.price.amount);
-    case 'starRating':
-      return [...listings].sort((a, b) => a.resort.starRating - b.resort.starRating);
-    case 'name':
-      return [...listings].sort((a, b) => a.resort.name.localeCompare(b.resort.name));
-    default:
-      return [...listings];
-  }
-};

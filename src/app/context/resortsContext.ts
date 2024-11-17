@@ -1,7 +1,7 @@
 'use client';
 
 import { createContext } from 'react';
-import { HotelDataProps } from './home/types';
+import { HotelDataProps } from '../resorts/types';
 
 interface HotelListingsContextType {
     sortedListings: HotelDataProps[];

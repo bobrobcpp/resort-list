@@ -1,8 +1,17 @@
 .radioGroup {
     border: none;
     padding: 0;
-    margin: 0 0 1.5rem 0;
+    margin: 18px 18px 0;
   }
+@media screen and (min-width: 850px) {
+    .radioGroup {
+        margin: unset;
+    }
+}
+  
+  /* .radioGroup > * {
+    margin: 0;
+} */
   
   .radioWrapper {
     position: relative;
@@ -18,13 +27,15 @@
   }
   
   .radioLabel {
-    display: inline-block;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
     padding: 0.5rem 1rem;
     background-color: white;
     cursor: pointer;
     transition: all 0.2s ease;
     font-size: 0.875rem;
-    width: 100%;
   }
   
   .radioLabel:hover {

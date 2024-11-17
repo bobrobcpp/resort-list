@@ -1,7 +1,14 @@
 .resortListContainer {
     display: block;
-    margin: 20px;
+    margin: 20px 20px 0;
     justify-items: center;
+}
+
+@media screen and (min-width: 850px) {
+    .resortListContainer {
+        margin: unset;
+    }
+    
 }
 
 .resortList {

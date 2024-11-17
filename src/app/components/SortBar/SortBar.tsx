@@ -1,14 +1,15 @@
 import { useContext } from 'react';
-import { ResortListingsContext } from '../../context';
+import { DynamicIcon } from '@/components/DynamicIcon/DynamicIcon';
+import { ResortListingsContext } from '@/context/resortsContext';
 import styles from './SortBar.module.css';
 
 const SortBar = () => {
     const context = useContext(ResortListingsContext);
 
     const sortOptions = [
-        { id: 'name', label: 'Sort alphabetically' },
-        { id: 'price', label: 'Sort by price' },
-        { id: 'rating', label: 'Sort by star rating' },
+        { id: 'name', label: 'Sort alphabetically', icon: 'ArrowDownAZ' },
+        { id: 'price', label: 'Sort by price', icon: 'PoundSterling' },
+        { id: 'rating', label: 'Sort by star rating', icon: 'Star' },
     ];
 
     const handleSort = (event: any) => {
@@ -30,6 +31,7 @@ const SortBar = () => {
                     />
                     <label htmlFor={option.id} className={styles.radioLabel}>
                         {option.label}
+                        <DynamicIcon icon={option.icon} />
                     </label>
                 </div>
             ))}

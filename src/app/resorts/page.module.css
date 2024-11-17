@@ -1,24 +1,29 @@
 .page {
     width: 100%;
-    height: 100vw;
+    min-height: 100vh;
     margin: 0 auto;
     justify-items: center;
     background-image: url('https://static.onthebeach.co.uk/fe-code-test/background.png');
+    background-repeat: repeat-x;
 }
 
 .contentContainer {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    gap: 1rem;
-    max-width: 1200px;
-    padding: 40px;
+    grid-template-columns: 1fr;
 }
+@media (min-width: 850px) {
+    .contentContainer {
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        gap: 1rem;
+        max-width: 1200px;
+        padding: 40px;
+      
+    }
+  }
 
 .sortBar {
     display: grid;
     grid-template-columns: 1fr;
     gap: 8px;
     border-radius: 8px;
-    background: var(--gray-alpha-100);
-    margin: 20px;
 }
