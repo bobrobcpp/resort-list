@@ -12,7 +12,7 @@ const SortBar = () => {
         { id: 'rating', label: 'Sort by star rating', icon: 'Star' },
     ];
 
-    const handleSort = (event: any) => {
+    const handleSort = (event: React.ChangeEvent<HTMLInputElement>) => {
         context.callback(event.target.value);
     };
 

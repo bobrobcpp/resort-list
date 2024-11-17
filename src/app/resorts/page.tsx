@@ -15,6 +15,7 @@ export default function Home() {
   const [sortByMethod, setSortByMethod] = useState('price');
 
   useEffect(() => {
+    // fetch data
     (async () => {
       try {
         const response = await fetch('https://static.onthebeach.co.uk/fe-code-test/data.json');
@@ -25,7 +26,17 @@ export default function Home() {
         setData(data);
         setLoading(false);
       } catch (error) {
-        setError(error.message);
+        if (error instanceof TypeError) {
+          if (error.name === 'AbortError') {
+            // Request was aborted
+            setError(error.name);
+          } else {
+            // Network error
+            setError(error.name);
+          }
+        } else if (error instanceof Error) {
+          setError(error.message);
+        }
         setLoading(false);
       }
     })();
@@ -38,9 +49,11 @@ export default function Home() {
           <div className={styles.sortBar}>
             <SortBar />
           </div>
-          <ResortList {...{ error, loading }} />
+          <ResortList />
         </div>
       </ResortListingsContext.Provider>
+      {loading && <p>Loading...</p>}
+      {error && <p>{error}</p>}
     </div>
   )
 }

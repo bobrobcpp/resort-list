@@ -3,7 +3,7 @@ import { ResortCard } from '@/components/ResortCard/ResortCard';
 import { ResortListingsContext } from '@/context/resortsContext';
 import styles from "./resortList.module.css";
 
-export const ResortList = ({ loading, error }: any) => {
+export const ResortList = () => {
   const data = useContext(ResortListingsContext);
   return (
     <div className={styles.resortListContainer}>
@@ -12,8 +12,6 @@ export const ResortList = ({ loading, error }: any) => {
           <ResortCard key={index} resort={resort} flightDetails={flightDetails} bookingDetails={bookingDetails} />
         ))}
       </div>
-      {loading && <p>Loading...</p>}
-      {error && <p>{error}</p>}
     </div>
   )
 }
