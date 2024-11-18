@@ -39,7 +39,7 @@ export const ResortCard = ({ resort, bookingDetails, flightDetails }: HotelDataP
                     </button>
                 </div>
             </div>
-            <div className={isExpanded ? styles.resortOverviewExpanded : styles.resortOverviewHidden}>
+            <div className={isExpanded ? styles.resortOverviewExpanded : styles.resortOverviewHidden} aria-hidden={!isExpanded} role='region'>
                 <h4>Overview</h4>
                 <p>{resort.overview}</p>
             </div>

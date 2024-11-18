@@ -8,7 +8,7 @@ import { HotelDataProps } from "./types";
 
 import styles from "./page.module.css";
 
-export default function Home() {
+export default function Resorts() {
   const [data, setData] = useState<HotelDataProps[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);

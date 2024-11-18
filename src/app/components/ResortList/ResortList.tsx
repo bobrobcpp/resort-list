@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { ResortCard } from '@/components/ResortCard/ResortCard';
 import { ResortListingsContext } from '@/context/resortsContext';
-import styles from "./resortList.module.css";
+import styles from './resortList.module.css';
 
 export const ResortList = () => {
   const data = useContext(ResortListingsContext);

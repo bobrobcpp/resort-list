@@ -1,8 +1,6 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
 import { render, screen, waitFor } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
-import Home from './page'
-import { ResortListingsContext } from '../context/resortsContext'
+import Resorts from './page'
 import { sortedListings } from '../utils/sortedListings'
 
 // Mock CSS module
@@ -30,36 +28,29 @@ vi.mock('@/utils/sortedListings', () => ({
 
 const mockData = [
     {
-        id: 1,
-        name: "Hotel A",
-        price: 100,
-        stars: 4,
-        location: "Location A"
+        key: 1,
+        resort: {
+            id: '1',
+            name: 'Zen Resort',
+            regionName: 'Iberian Peninsula',
+            countryName: 'Spain',
+            starRating: 4,
+            overview: 'A peaceful retreat.',
+            image: { url: 'zen.jpg', description: 'Zen Resort Image' },
+        },
+        flightDetails: {
+            departureAirport: 'EMA',
+            departureDate: '2024-12-01',
+        },
+        bookingDetails: {
+            party: { adults: 2, children: 0, infants: 0 },
+            lengthOfStay: 5,
+            price: { amount: 200, currency: 'GBP' },
+        },
     },
-    {
-        id: 2,
-        name: "Hotel B",
-        price: 200,
-        stars: 5,
-        location: "Location B"
-    }
-]
+];
 
-// Create a wrapper component that provides the context
-const renderWithContext = (component: React.ReactNode) => {
-    return render(
-        <ResortListingsContext.Provider
-            value={{
-                sortedListings: mockData,
-                callback: vi.fn()
-            }}
-        >
-            {component}
-        </ResortListingsContext.Provider>
-    )
-}
-
-describe('Home Component', () => {
+describe('Resorts Component', () => {
     beforeEach(() => {
         vi.stubGlobal('fetch', vi.fn())
     })
@@ -73,7 +64,7 @@ describe('Home Component', () => {
             new Promise(resolve => setTimeout(resolve, 100))
         ))
 
-        render(<Home />)
+        render(<Resorts />)
         expect(screen.getByText('Loading...')).toBeInTheDocument()
     })
 
@@ -85,7 +76,7 @@ describe('Home Component', () => {
             })
         ))
 
-        render(<Home />)
+        render(<Resorts />)
 
         await waitFor(() => {
             expect(screen.queryByText('Loading...')).not.toBeInTheDocument()
@@ -104,7 +95,7 @@ describe('Home Component', () => {
             })
         ))
 
-        render(<Home />)
+        render(<Resorts />)
 
         await waitFor(() => {
             expect(screen.getByText(errorMessage)).toBeInTheDocument()
@@ -116,7 +107,7 @@ describe('Home Component', () => {
             Promise.reject(new TypeError('NetworkError'))
         ))
 
-        render(<Home />)
+        render(<Resorts />)
 
         await waitFor(() => {
             expect(screen.getByText('TypeError')).toBeInTheDocument()
@@ -124,7 +115,6 @@ describe('Home Component', () => {
     })
 
     it('should update sort method when data changes', async () => {
-        const mockSortedListings = vi.fn()
         vi.stubGlobal('fetch', vi.fn().mockImplementationOnce(() =>
             Promise.resolve({
                 ok: true,
@@ -132,7 +122,7 @@ describe('Home Component', () => {
             })
         ))
 
-        const { rerender } = render(<Home />)
+        render(<Resorts />)
 
         await waitFor(() => {
             expect(screen.queryByText('Loading...')).not.toBeInTheDocument()
@@ -142,10 +132,3 @@ describe('Home Component', () => {
         expect(sortedListings).toHaveBeenCalledWith(mockData, 'price')
     })
 })
-
-// Add type for the mock to avoid TypeScript errors
-declare global {
-    interface Window {
-        fetch: any
-    }
-}
