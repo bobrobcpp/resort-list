@@ -17,6 +17,7 @@ npx serve@latest out
 Open [http://localhost:3000/resorts](http://localhost:3000/resorts) with your browser to see the result.  
 
 ##  Project To Do list
+Should be able to pass an argument in for the source of the data json rather than having it hardcoded in the component.  
 Complete component tests for ResortList and SortBar. -Need to fix mocking of useRouter.  
 Create a loading screen.  
 More user error messaging.  
